@@ -266,6 +266,15 @@
         ],
         "description": "A standard main function for a C++ program"
     },
+    "#region": {
+      "prefix": "#region",
+      "body": [
+        "// #region ${1:region_name}",
+        "$0",
+        "// #endregion"
+      ],
+      "description": "code regions to help IDEs for code-folding."
+    },
     "#guard": {
       "prefix": "#guard",
       "body": [
