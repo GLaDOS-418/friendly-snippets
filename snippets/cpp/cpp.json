@@ -2,15 +2,18 @@
     "Starter Template": {
     "prefix": "st",
     "body": [
-        "#include <iostream>",
+        "#include <bits/stdc++.h>",
         "",
-        "int main (int argc, char *argv[]) {",
+        "int main (int argc, char* argv[]) {",
+            "\tstd::ios_base::sync_with_stdio(false);",
+            "\tstd::cin.tie(nullptr);",
+            "",
             "\t$1",
             "",
             "\treturn 0;",
         "}"
         ],
-        "description": "Standard starter template for a tiny C++ program"
+        "description": "Standard starter template for a tiny C++ program."
     },
     "for": {
         "prefix": "for",
@@ -259,12 +262,12 @@
     "Main function template": {
         "prefix": "main",
         "body": [
-            "int main (int argc, char *argv[]) {",
+            "int main (int /*argc*/, char** /*argv*/) {",
             "\t$1",
             "\treturn 0;",
             "}"
         ],
-        "description": "A standard main function for a C++ program"
+        "description": "A standard main function for a C++ program."
     },
     "#region": {
       "prefix": "#region",
