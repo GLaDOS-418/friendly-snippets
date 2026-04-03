@@ -7,12 +7,12 @@
             " *",
             " * ${2:Description.}$0",
             " *",
-            " * @param ${4:name} ${5:Type and description of the parameter.}",
+            " * @param[${4:in}] ${5:name} ${6:Type and description of the parameter.}",
             " * @return ${3:Type and description of the returned value.}",
             " *",
             " * @example",
-            " * // ${6:Description of my example.}",
-            " * ${7:Write me later}",
+            " * // ${7:Description of my example.}",
+            " * ${8:Write me later}",
             " */"
         ],
         "description": "A C++ comment block for functions, including description, param, return, and example."
@@ -42,9 +42,9 @@
     "@param": {
         "prefix": "@param",
         "body": [
-            "@param ${1:name} ${2:Type and description of the parameter.}$0"
+            "@param[${1:in}] ${2:name} ${3:Type and description of the parameter.}$0"
         ],
-        "description": "Type and description of a function parameter."
+        "description": "Direction, name, and description of a function parameter."
     },
     "@return": {
         "prefix": "@return",
@@ -52,6 +52,87 @@
             "@return ${1:Type and description of the returned value.}$0"
         ],
         "description": "Type and description of the returned value."
+    },
+    "@tparam": {
+        "prefix": "@tparam",
+        "body": [
+            "@tparam ${1:T} ${2:Description of the template parameter.}$0"
+        ],
+        "description": "Description of a template type parameter."
+    },
+    "@retval": {
+        "prefix": "@retval",
+        "body": [
+            "@retval ${1:value} ${2:Meaning of this specific return value.}$0"
+        ],
+        "description": "Document a specific return value, especially useful for status enums or sentinel values."
+    },
+    "@note": {
+        "prefix": "@note",
+        "body": [
+            "@note ${1:Additional context that callers should know.}$0"
+        ],
+        "description": "Add an implementation or usage note."
+    },
+    "@warning": {
+        "prefix": "@warning",
+        "body": [
+            "@warning ${1:Important caveat or unsafe behavior.}$0"
+        ],
+        "description": "Highlight an important caveat for callers."
+    },
+    "@pre": {
+        "prefix": "@pre",
+        "body": [
+            "@pre ${1:Condition that must hold before calling.}$0"
+        ],
+        "description": "Document a precondition."
+    },
+    "@post": {
+        "prefix": "@post",
+        "body": [
+            "@post ${1:Condition guaranteed after returning.}$0"
+        ],
+        "description": "Document a postcondition."
+    },
+    "@test": {
+        "prefix": "@test",
+        "body": [
+            "@test ${1:Describes the behavior under test.}$0"
+        ],
+        "description": "Document a test case or test-style example."
+    },
+    "fndoc": {
+        "prefix": "fndoc",
+        "body": [
+            "/**",
+            " * @brief ${1:A one-line summary.}",
+            " *",
+            " * ${2:Description.}",
+            " *",
+            " * @param[${3:in}] ${4:param} ${5:Description of the parameter.}",
+            " * @return ${6:Description of the returned value.}",
+            " * @throws ${7:ExceptionType} ${8:When this is thrown.}",
+            " */$0"
+        ],
+        "description": "Compact Doxygen block for a function or method."
+    },
+    "@defgroup": {
+        "prefix": "@defgroup",
+        "body": [
+            "/**",
+            " * @defgroup ${1:group_name} ${2:Short group title}",
+            " * @brief ${3:Collect related APIs, types, and tests under one named group.}$0",
+            " */"
+        ],
+        "description": "Define a named Doxygen group. Useful when you want related declarations documented together."
+    },
+    "@ingroup": {
+        "prefix": "@ingroup",
+        "body": [
+            "@ingroup ${1:group_name}$0"
+        ],
+        "description": "Attach a declaration to an existing Doxygen group."
     },
     "@example": {
         "prefix": "@example",
@@ -77,23 +158,23 @@
         "prefix": "@class",
         "body": [
             "/**",
-            " * @class ${1:ClassfaceName}$0",
+            " * @class ${1:ClassName}$0",
             " *",
             " * @brief ${2:Description.}",
             " */"
         ],
         "description": "Provide description for an implementation class. This tag is a synonym of @class."
     },
-    "@exclass": {
-        "prefix": "@exclass",
+    "@struct": {
+        "prefix": "@struct",
         "body": [
             "/**",
-            " * @exception ${1:ExceptionName}$0",
+            " * @struct ${1:StructName}$0",
             " *",
             " * @brief ${2:Description.}",
             " */"
         ],
-        "description": "Provide description for an exception class. This tag is a synonym of @class."
+        "description": "Provide description for a struct. This tag is a synonym of @class."
     },
     "@enum": {
         "prefix": "@enum",
@@ -120,11 +201,11 @@
     "@file": {
         "prefix": "@file",
         "body": [
-            "/**",
+            "/***********************************************************************************************",
             " * @file ${1:${TM_FILENAME}}$0",
             " *",
-            " * @brief ${2:Description.}",
-            " */"
+            " * @brief ${2:Contains implementation of ${TM_FILENAME_BASE}.}",
+            " ***********************************************************************************************/"
         ],
         "description": "Indicates that a comment block contains documentation for a source or header file."
     },
@@ -149,7 +230,7 @@
         ],
         "description": "Indicates the exceptions that can be thrown by a function."
     },
-    "<a>": {
+    "@link": {
         "prefix": "<a",
         "body": [
             "<a href=\"${1:Url}\">${2:Link text}</a>$0"

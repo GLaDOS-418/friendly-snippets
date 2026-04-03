@@ -1,0 +1,131 @@
+{
+    "GoogleTest Test": {
+        "prefix": "test",
+        "body": [
+            "/**",
+            " * @brief ${1:Verifies the expected behavior.}",
+            " *",
+            " * @test ${2:Exercises the unit under test in an isolated scenario.}",
+            " */",
+            "TEST(${3:SuiteName}, ${4:TestName}) {",
+            "\t// TODO(${5:you}): arrange the test inputs.",
+            "\t${0}",
+            "}"
+        ],
+        "description": "Documented TEST(...) boilerplate."
+    },
+    "GoogleTest Fixture Test": {
+        "prefix": "testf",
+        "body": [
+            "/**",
+            " * @brief ${1:Fixture for ${2:unit under test}.}",
+            " */",
+            "class ${3:${2}Test} : public ::testing::Test {",
+            "protected:",
+            "\t/**",
+            "\t * @brief Prepare shared state for each test case.",
+            "\t */",
+            "\tvoid SetUp() override {",
+            "\t\t// TODO(${4:you}): initialize fixture state.",
+            "\t}",
+            "",
+            "\t/**",
+            "\t * @brief Release shared state for each test case.",
+            "\t */",
+            "\tvoid TearDown() override {",
+            "\t\t// TODO(${4:you}): cleanup fixture state.",
+            "\t}",
+            "};",
+            "",
+            "/**",
+            " * @brief ${5:Verifies behavior using the fixture state.}",
+            " *",
+            " * @test ${6:Exercises a fixture-backed scenario.}",
+            " */",
+            "TEST_F(${3:${2}Test}, ${7:HandlesScenario}) {",
+            "\t// TODO(${4:you}): add expectations.",
+            "\t${0}",
+            "}"
+        ],
+        "description": "Documented fixture class plus TEST_F(...) boilerplate."
+    },
+    "GoogleTest Parameterized Test": {
+        "prefix": "testp",
+        "body": [
+            "/**",
+            " * @brief Parameters that describe one test case.",
+            " */",
+            "struct ${1:CaseParam} {",
+            "\tstd::string name;",
+            "};",
+            "",
+            "/**",
+            " * @brief Fixture for parameterized tests of ${2:unit under test}.",
+            " */",
+            "class ${3:${2}Test} : public ::testing::TestWithParam<${1:CaseParam}> {",
+            "protected:",
+            "\t/**",
+            "\t * @brief Return a readable name for the active parameter set.",
+            "\t */",
+            "\tstd::string TestName() const {",
+            "\t\treturn GetParam().name;",
+            "\t}",
+            "};",
+            "",
+            "/**",
+            " * @brief ${4:Verifies the observable behavior for a parameterized case.}",
+            " *",
+            " * @test ${5:Exercises the test body with one parameter value.}",
+            " */",
+            "TEST_P(${3:${2}Test}, ${6:HandlesNamedCase}) {",
+            "\tconst auto& param = GetParam();",
+            "\t// TODO(${7:you}): use param in assertions.",
+            "\t${0}",
+            "}",
+            "",
+            "INSTANTIATE_TEST_SUITE_P(",
+            "\t${8:NamedCases},",
+            "\t${3:${2}Test},",
+            "\t::testing::Values(",
+            "\t\t${1:CaseParam}{\"${9:first_case}\"},",
+            "\t\t${1:CaseParam}{\"${10:second_case}\"}",
+            "\t)",
+            ");"
+        ],
+        "description": "Documented TEST_P(...) boilerplate with a parameterized fixture."
+    },
+    "GoogleTest Expect Eq": {
+        "prefix": "expect_eq",
+        "body": [
+            "EXPECT_EQ(${1:expected}, ${2:actual});$0"
+        ],
+        "description": "EXPECT_EQ assertion."
+    },
+    "GoogleTest Assert Eq": {
+        "prefix": "assert_eq",
+        "body": [
+            "ASSERT_EQ(${1:expected}, ${2:actual});$0"
+        ],
+        "description": "ASSERT_EQ assertion."
+    },
+    "GoogleTest Expect That": {
+        "prefix": "expect_that",
+        "body": [
+            "EXPECT_THAT(${1:actual}, ${2:::testing::Eq(${3:expected})});$0"
+        ],
+        "description": "EXPECT_THAT matcher assertion."
+    },
+    "GoogleTest Matcher": {
+        "prefix": "matcher",
+        "body": [
+            "/**",
+            " * @brief ${1:Checks a custom matcher condition.}",
+            " */",
+            "MATCHER(${2:IsValid}, \"${3:describes the matcher}\") {",
+            "\t// TODO(${4:you}): implement the matcher logic.",
+            "\treturn ${5:true};",
+            "}$0"
+        ],
+        "description": "Documented MATCHER(...) boilerplate."
+    }
+}

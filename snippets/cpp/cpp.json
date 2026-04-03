@@ -262,7 +262,9 @@
     "Main function template": {
         "prefix": "main",
         "body": [
-            "int main (int /*argc*/, char** /*argv*/) {",
+            "int main (int argc, char* argv[]) {",
+            "(void)argc; // not used. avoid compiler warning.",
+            "(void)argv; // not used. avoid compiler warning.",
             "\t$1",
             "\treturn 0;",
             "}"
@@ -290,7 +292,119 @@
       ],
       "description": "header guard. format :\n\t_<workspacename>_<dirname>_<filename>_<extension>_"
     },
-    "sca": {
+    "#pragma once": {
+      "prefix": "once",
+      "body": [
+        "#pragma once",
+        "",
+        "$0"
+      ],
+      "description": "Modern single-line header guard."
+    },
+    "namespace block": {
+      "prefix": "ns",
+      "body": [
+        "namespace ${1:name} {",
+        "\t$0",
+        "} // namespace ${1:name}"
+      ],
+      "description": "Namespace block with a closing namespace comment."
+    },
+    "using alias": {
+      "prefix": "using",
+      "body": [
+        "using ${1:Alias} = ${2:Type};$0"
+      ],
+      "description": "Modern type alias using `using`."
+    },
+    "constexpr value": {
+      "prefix": "cexpr",
+      "body": [
+        "constexpr ${1:auto} ${2:name} = ${3:value};$0"
+      ],
+      "description": "Inline constexpr value declaration."
+    },
+    "template typename": {
+      "prefix": "tmpl",
+      "body": [
+        "template <typename ${1:T}>",
+        "$0"
+      ],
+      "description": "Template declaration for a single type parameter."
+    },
+    "string_view": {
+      "prefix": "sv",
+      "body": [
+        "std::string_view ${1:name}$0"
+      ],
+      "description": "std::string_view declaration."
+    },
+    "span": {
+      "prefix": "span",
+      "body": [
+        "std::span<${1:int}> ${2:name}$0"
+      ],
+      "description": "std::span declaration."
+    },
+    "override": {
+      "prefix": "ovr",
+      "body": [
+        "override$0"
+      ],
+      "description": "override specifier."
+    },
+    "noexcept": {
+      "prefix": "noex",
+      "body": [
+        "noexcept$0"
+      ],
+      "description": "noexcept specifier."
+    },
+    "lambda": {
+      "prefix": "lam",
+      "body": [
+        "[${1:&}](${2}) {",
+        "\t$0",
+        "}"
+      ],
+      "description": "Lambda expression skeleton."
+    },
+    "enum class block": {
+      "prefix": "enumc",
+      "body": [
+        "enum class ${1:Name} {",
+        "\t${2:Value1},",
+        "\t${3:Value2}",
+        "};$0"
+      ],
+      "description": "Multiline enum class declaration."
+    },
+    "modern class": {
+      "prefix": "classm",
+      "body": [
+        "class ${1:Name} {",
+        "public:",
+        "\t${1:Name}() = default;",
+        "\t~${1:Name}() = default;",
+        "",
+        "\t$0",
+        "",
+        "private:",
+        "};"
+      ],
+      "description": "Inline modern class skeleton without out-of-class boilerplate."
+    },
+    "modern struct": {
+      "prefix": "structm",
+      "body": [
+        "struct ${1:Name} {",
+        "\t${1:Name}() = default;",
+        "\t$0",
+        "};"
+      ],
+      "description": "Inline modern struct skeleton."
+    },
+    "sca": {    "sca": {
       "prefix": "sca",
       "body": [
         "static_cast<${1:unsigned}>(${2:expr})$3"

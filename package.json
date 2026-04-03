@@ -37,6 +37,10 @@
                 "path": "./snippets/cpp/cppdoc.json"
             },
             {
+                "language": "gtest",
+                "path": "./snippets/cpp/gtest.json"
+            },
+            {
                 "language": ["csharp", "cs"],
                 "path": "./snippets/csharp/csharp.json"
             },
@@ -599,4 +603,3 @@
         ]
     }
 }
-
