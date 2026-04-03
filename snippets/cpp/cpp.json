@@ -283,12 +283,12 @@
     "#guard": {
       "prefix": "#guard",
       "body": [
-        "#ifndef _${WORKSPACE_NAME/(.*)/${1:/upcase}/}_${TM_DIRECTORY/.*[\\\/](.*)/${1:/upcase}/}${TM_FILENAME_BASE/(.*)/_${1:/upcase}/}${TM_FILENAME/.*\\.(.*)/_${1:/upcase}/}_",
-        "#define _${WORKSPACE_NAME/(.*)/${1:/upcase}/}_${TM_DIRECTORY/.*[\\\/](.*)/${1:/upcase}/}${TM_FILENAME_BASE/(.*)/_${1:/upcase}/}${TM_FILENAME/.*\\.(.*)/_${1:/upcase}/}_",
+        "#ifndef _${WORKSPACE_NAME/(.*)/${1:/upcase}/}_${TM_DIRECTORY/.*[\\\/](.*)/${1:/upcase}/}${TM_FILENAME_BASE/(.*)/_${1:/upcase}/}${TM_FILENAME/.*\\.(.*)/_${1:/upcase}/}",
+        "#define _${WORKSPACE_NAME/(.*)/${1:/upcase}/}_${TM_DIRECTORY/.*[\\\/](.*)/${1:/upcase}/}${TM_FILENAME_BASE/(.*)/_${1:/upcase}/}${TM_FILENAME/.*\\.(.*)/_${1:/upcase}/}",
         "",
         "$0",
         "",
-        "#endif  // _${WORKSPACE_NAME/(.*)/${1:/upcase}/}_${TM_DIRECTORY/.*[\\\/](.*)/${1:/upcase}/}${TM_FILENAME_BASE/(.*)/_${1:/upcase}/}${TM_FILENAME/.*\\.(.*)/_${1:/upcase}/}_"
+        "#endif  // _${WORKSPACE_NAME/(.*)/${1:/upcase}/}_${TM_DIRECTORY/.*[\\\/](.*)/${1:/upcase}/}${TM_FILENAME_BASE/(.*)/_${1:/upcase}/}${TM_FILENAME/.*\\.(.*)/_${1:/upcase}/}"
       ],
       "description": "header guard. format :\n\t_<workspacename>_<dirname>_<filename>_<extension>_"
     },
@@ -404,7 +404,7 @@
       ],
       "description": "Inline modern struct skeleton."
     },
-    "sca": {    "sca": {
+    "sca": {
       "prefix": "sca",
       "body": [
         "static_cast<${1:unsigned}>(${2:expr})$3"

@@ -98,12 +98,14 @@
     "@test": {
         "prefix": "@test",
         "body": [
-            "@test ${1:Describes the behavior under test.}$0"
+            "/**",
+            " * @test ${1:Describes the behavior under test.}",
+            " */$0"
         ],
         "description": "Document a test case or test-style example."
     },
-    "fndoc": {
-        "prefix": "fndoc",
+    "@function": {
+        "prefix": "@function",
         "body": [
             "/**",
             " * @brief ${1:A one-line summary.}",
@@ -202,10 +204,11 @@
         "prefix": "@file",
         "body": [
             "/***********************************************************************************************",
-            " * @file ${1:${TM_FILENAME}}$0",
+            " * @file ${1:${TM_FILENAME}}",
             " *",
             " * @brief ${2:Contains implementation of ${TM_FILENAME_BASE}.}",
-            " ***********************************************************************************************/"
+            " ***********************************************************************************************/",
+            "$0"
         ],
         "description": "Indicates that a comment block contains documentation for a source or header file."
     },
@@ -231,9 +234,9 @@
         "description": "Indicates the exceptions that can be thrown by a function."
     },
     "@link": {
-        "prefix": "<a",
+        "prefix": "@link",
         "body": [
-            "<a href=\"${1:Url}\">${2:Link text}</a>$0"
+            "[${2:Link text}](${1:Url})$0"
         ],
         "description": "Specify url with custom link texts. Refer: doxygen.nl/manual/autolink.html"
     }
